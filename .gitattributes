@@ -1,0 +1,6 @@
+*.msix filter=lfs diff=lfs merge=lfs -text
+*.msixupload filter=lfs diff=lfs merge=lfs -text
+*.zip filter=lfs diff=lfs merge=lfs -text
+*.pfx filter=lfs diff=lfs merge=lfs -text
+*.cer filter=lfs diff=lfs merge=lfs -text
+artifacts/private-beta/**/runtime/lib/modules filter=lfs diff=lfs merge=lfs -text

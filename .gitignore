@@ -12,6 +12,9 @@ target/
 .project
 .factorypath
 *.class
+__pycache__/
+*.pyc
+*.pyo
 
 # OS files
 .DS_Store
@@ -20,6 +23,18 @@ Thumbs.db
 # Logs
 logs/
 *.log
+build_log*.txt
+build.log
+build_verify.log
+
+# Generated/extracted packaging directories
+extracted_content/
+extracted_package/
+temp_extraction/
+temp_msix_extract/
+temp_unpacked/
+unpacked/
+unpacked_v2/
 
 # Generated private beta packaging outputs
 artifacts/private-beta/

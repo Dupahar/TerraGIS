@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.terra.gis.terraai.proto";
+option java_outer_classname = "TerraAiServiceProto";
+
+package terragis.terraai.v1;
+
+service TerraAiOrchestrator {
+  rpc SubmitJob(PredictionRequest) returns (JobSubmissionResponse);
+  rpc GetJobStatus(JobId) returns (JobStatusResponse);
+  rpc CancelJob(JobId) returns (CancelResponse);
+}
+
+message PredictionRequest {
+  string request_id = 1;
+  string aoi_wkt = 2;
+  string input_raster_uri = 3;
+  string model_profile = 4;
+  int32 target_resolution_m = 5;
+  map<string, string> metadata = 6;
+}
+
+message JobSubmissionResponse {
+  string job_id = 1;
+  string accepted_at_utc = 2;
+  string status = 3;
+}
+
+message JobId {
+  string job_id = 1;
+}
+
+message JobStatusResponse {
+  string job_id = 1;
+  string status = 2;
+  string phase = 3;
+  int32 phase_index = 4;
+  int32 phase_total = 5;
+  int32 progress_percent = 6;
+  string message = 7;
+  string updated_at_utc = 8;
+  repeated ArtifactReference artifacts = 9;
+  ErrorInfo error = 10;
+}
+
+message ArtifactReference {
+  string name = 1;
+  string uri = 2;
+  string media_type = 3;
+}
+
+message ErrorInfo {
+  string code = 1;
+  string title = 2;
+  string detail = 3;
+  bool retryable = 4;
+}
+
+message CancelResponse {
+  string job_id = 1;
+  bool cancelled = 2;
+  string message = 3;
+}

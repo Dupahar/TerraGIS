@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.terra.gis.proto";
+option java_outer_classname = "TerraGisProto";
+
+package terragis.v1;
+
+service TerraApiService {
+  rpc Ping(PingRequest) returns (PingResponse);
+  rpc SegmentTile(SegmentTileRequest) returns (SegmentTileResponse);
+}
+
+message PingRequest {
+  string client_id = 1;
+}
+
+message PingResponse {
+  string message = 1;
+  int64 server_time_epoch_ms = 2;
+}
+
+message SegmentTileRequest {
+  string model_name = 1;
+  int32 raster_width = 2;
+  int32 raster_height = 3;
+  int32 tile_x = 4;
+  int32 tile_y = 5;
+  int32 tile_width = 6;
+  int32 tile_height = 7;
+  string raster_path = 8;
+}
+
+message SegmentTileResponse {
+  int32 mask_width = 1;
+  int32 mask_height = 2;
+  bytes packed_mask = 3;
+  string class_label = 4;
+  double confidence = 5;
+}
