@@ -1,0 +1,30 @@
+# Maven build output
+target/
+
+# Maven wrapper download cache
+.mvn/repository/
+
+# IDE files
+.idea/
+*.iml
+.settings/
+.classpath
+.project
+.factorypath
+*.class
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Generated private beta packaging outputs
+artifacts/private-beta/
+artifacts/private-beta/*/app-image/
+artifacts/private-beta/*/bundle/
+
+# Protoc / gRPC generated sources (regenerated at build time)
+src/main/java/com/terra/gis/proto/
